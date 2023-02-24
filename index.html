@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Typewriter Effect</title>
+    <style>
+      #typewriter-text {
+        overflow: hidden;
+        border-right: 0.15em solid orange;
+        white-space: nowrap;
+        letter-spacing: 0.15em;
+        animation: typing 2s steps(20) forwards;
+      }
+
+      @keyframes typing {
+        from {
+          width: 0;
+        }
+        to {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="typewriter-text"></div>
+    <button onclick="typewriterEffect()">Start Typing</button>
+    <script>
+      function typewriterEffect() {
+        const text = "Hello, World!";
+        let i = 0;
+        const intervalId = setInterval(() => {
+          document.getElementById("typewriter-text").innerText += text.charAt(i);
+          i++;
+          if (i >= text.length) {
+            clearInterval(intervalId);
+          }
+        }, 100);
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        typewriterEffect();
+      });
+    </script>
+  </body>
+</html>
